@@ -8,7 +8,7 @@ class PositionSpec extends FunSpec with Matchers {
     it("should be able to separate String into row and column type") {
       val pos: Position = "D3"
       pos.row shouldBe 'D'
-      pos.col shouldBe 3
+      pos.column shouldBe 3
     }
 
     it("display position in proper output format") {

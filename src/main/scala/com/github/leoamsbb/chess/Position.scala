@@ -1,7 +1,7 @@
 package com.github.leoamsbb.chess
 
-case class Position(row: Char, col: Int) {
-  override def toString: String = s"$row$col"
+case class Position(row: Char, column: Int) {
+  override def toString: String = s"$row$column"
 }
 
 object Position {
