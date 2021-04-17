@@ -42,4 +42,20 @@ class ChessPieceSpec extends FunSpec with Matchers {
       piece.current.toString shouldBe expectedPosition
     }
   }
+
+  describe("ChessPiece Step") {
+    it("should be Single for King and Pawn") {
+      val chessPieces: List[ChessPiece] = List("King D2", "Pawn E6")
+      all (chessPieces.map(_.step)) shouldBe Single
+    }
+
+    it("should be Default for Queen, Bishop, Rook") {
+      val chessPieces: List[ChessPiece] = List("Queen B3", "Rook D5", "Bishop C4")
+      all (chessPieces.map(_.step)) shouldBe Default
+    }
+
+    it("should be TwoAndHalf for Horse") {
+      Horse("C6").step shouldBe TwoAndHalf
+    }
+  }
 }

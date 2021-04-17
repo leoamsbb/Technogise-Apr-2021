@@ -2,14 +2,25 @@ package com.github.leoamsbb.chess
 
 sealed trait ChessPiece {
   def current: Position
+
+  def step: Step = Default
 }
 
-case class King(current: Position) extends ChessPiece
-case class Horse(current: Position) extends ChessPiece
+case class King(current: Position) extends ChessPiece {
+  override val step:Step = Single
+}
+
+case class Horse(current: Position) extends ChessPiece {
+  override val step: Step = TwoAndHalf
+}
+
 case class Queen(current: Position) extends ChessPiece
 case class Bishop(current: Position) extends ChessPiece
 case class Rook(current: Position) extends ChessPiece
-case class Pawn(current: Position) extends ChessPiece
+
+case class Pawn(current: Position) extends ChessPiece {
+  override val step:Step = Single
+}
 
 object ChessPiece {
   implicit def fromString(input: String): ChessPiece = input match {
