@@ -18,8 +18,11 @@ case class Horse(current: Position) extends ChessPiece {
 }
 
 case class Queen(current: Position) extends ChessPiece
-case class Bishop(current: Position) extends ChessPiece
 case class Rook(current: Position) extends ChessPiece
+
+case class Bishop(current: Position) extends ChessPiece {
+  override def canMove: List[Direction] = List(Diagonal())
+}
 
 case class Pawn(current: Position) extends ChessPiece {
   override val step:Step = Single
