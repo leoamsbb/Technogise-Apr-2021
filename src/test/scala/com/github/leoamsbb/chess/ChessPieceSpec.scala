@@ -5,7 +5,7 @@ import org.scalatest.{FunSpec, Matchers}
 import scala.reflect.ClassTag
 
 class ChessPieceSpec extends FunSpec with Matchers {
-  describe("ChessPiece") {
+  describe("ChessPiece Extraction") {
 
     it ("should extract King and current position from String") {
       createAndVerify[King]("King D5", "D5")
