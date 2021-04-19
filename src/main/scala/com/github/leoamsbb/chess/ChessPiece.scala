@@ -4,6 +4,9 @@ sealed trait ChessPiece {
   def current: Position
 
   def step: Step = Default
+
+  def canMove: List[Direction] = List(Vertical(), Horizontal(), Diagonal())
+
 }
 
 case class King(current: Position) extends ChessPiece {

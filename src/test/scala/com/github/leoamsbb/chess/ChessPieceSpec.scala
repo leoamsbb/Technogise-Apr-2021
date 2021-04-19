@@ -58,4 +58,10 @@ class ChessPieceSpec extends FunSpec with Matchers {
       Horse("C6").step shouldBe TwoAndHalf
     }
   }
+
+  describe("ChessPiece Direction") {
+    it ("King and Queen can move in all directions") {
+      King("A3").canMove should contain theSameElementsAs List(Vertical(), Horizontal(), Diagonal())
+      Queen("A3").canMove should contain theSameElementsAs List(Vertical(), Horizontal(), Diagonal())
+    }
 }
