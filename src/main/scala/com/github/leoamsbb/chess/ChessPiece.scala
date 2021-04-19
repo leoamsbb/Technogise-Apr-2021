@@ -15,13 +15,18 @@ case class King(current: Position) extends ChessPiece {
 
 case class Horse(current: Position) extends ChessPiece {
   override val step: Step = TwoAndHalf
+
+  override def canMove: List[Direction] = List(Vertical(), Horizontal())
 }
 
 case class Queen(current: Position) extends ChessPiece
-case class Rook(current: Position) extends ChessPiece
 
 case class Bishop(current: Position) extends ChessPiece {
   override def canMove: List[Direction] = List(Diagonal())
+}
+
+case class Rook(current: Position) extends ChessPiece {
+  override def canMove: List[Direction] = List(Vertical(), Horizontal())
 }
 
 case class Pawn(current: Position) extends ChessPiece {

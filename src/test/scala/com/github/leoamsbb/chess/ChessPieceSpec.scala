@@ -68,4 +68,9 @@ class ChessPieceSpec extends FunSpec with Matchers {
     it("Bishop can move only Diagonally") {
       Bishop("C2").canMove should contain theSameElementsAs List(Diagonal())
     }
+
+    it("Horse and Rook can move Vertically and Horizontally") {
+      Horse("H2").canMove should contain theSameElementsAs List(Vertical(), Horizontal())
+      Rook("D2").canMove should contain theSameElementsAs List(Vertical(), Horizontal())
+    }
 }
