@@ -31,6 +31,8 @@ case class Rook(current: Position) extends ChessPiece {
 
 case class Pawn(current: Position) extends ChessPiece {
   override val step:Step = Single
+
+  override def canMove: List[Direction] = List(Vertical(backward = false), Diagonal(backward = false))
 }
 
 object ChessPiece {
