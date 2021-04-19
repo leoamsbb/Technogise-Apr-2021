@@ -1,5 +1,7 @@
 package com.github.leoamsbb.chess
 
+import scala.language.implicitConversions
+
 case class Position(row: Char, column: Int) {
   override def toString: String = s"$row$column"
 }

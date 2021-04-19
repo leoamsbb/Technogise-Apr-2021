@@ -1,5 +1,7 @@
 package com.github.leoamsbb.chess
 
+import scala.language.implicitConversions
+
 sealed trait ChessPiece {
   def current: Position
 
