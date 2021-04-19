@@ -4,6 +4,9 @@ sealed trait ChessPiece {
   def current: Position
 
   def step: Step = Default
+
+  def canMove: List[Direction] = List(Vertical(), Horizontal(), Diagonal())
+
 }
 
 case class King(current: Position) extends ChessPiece {
@@ -12,14 +15,24 @@ case class King(current: Position) extends ChessPiece {
 
 case class Horse(current: Position) extends ChessPiece {
   override val step: Step = TwoAndHalf
+
+  override def canMove: List[Direction] = List(Vertical(), Horizontal())
 }
 
 case class Queen(current: Position) extends ChessPiece
-case class Bishop(current: Position) extends ChessPiece
-case class Rook(current: Position) extends ChessPiece
+
+case class Bishop(current: Position) extends ChessPiece {
+  override def canMove: List[Direction] = List(Diagonal())
+}
+
+case class Rook(current: Position) extends ChessPiece {
+  override def canMove: List[Direction] = List(Vertical(), Horizontal())
+}
 
 case class Pawn(current: Position) extends ChessPiece {
   override val step:Step = Single
+
+  override def canMove: List[Direction] = List(Vertical(backward = false), Diagonal(backward = false))
 }
 
 object ChessPiece {

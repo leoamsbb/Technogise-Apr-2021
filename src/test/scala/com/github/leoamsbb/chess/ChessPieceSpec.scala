@@ -5,7 +5,7 @@ import org.scalatest.{FunSpec, Matchers}
 import scala.reflect.ClassTag
 
 class ChessPieceSpec extends FunSpec with Matchers {
-  describe("ChessPiece") {
+  describe("ChessPiece Extraction") {
 
     it ("should extract King and current position from String") {
       createAndVerify[King]("King D5", "D5")
@@ -56,6 +56,26 @@ class ChessPieceSpec extends FunSpec with Matchers {
 
     it("should be TwoAndHalf for Horse") {
       Horse("C6").step shouldBe TwoAndHalf
+    }
+  }
+
+  describe("ChessPiece Direction") {
+    it ("King and Queen can move in all directions") {
+      King("A3").canMove should contain theSameElementsAs List(Vertical(), Horizontal(), Diagonal())
+      Queen("A3").canMove should contain theSameElementsAs List(Vertical(), Horizontal(), Diagonal())
+    }
+
+    it("Bishop can move only Diagonally") {
+      Bishop("C2").canMove should contain theSameElementsAs List(Diagonal())
+    }
+
+    it("Horse and Rook can move Vertically and Horizontally") {
+      Horse("H2").canMove should contain theSameElementsAs List(Vertical(), Horizontal())
+      Rook("D2").canMove should contain theSameElementsAs List(Vertical(), Horizontal())
+    }
+
+    it("Pawn can move Vertically and Diagonally forward") {
+      Pawn("B4").canMove should contain theSameElementsAs List(Vertical(backward=false), Diagonal(backward = false))
     }
   }
 }
