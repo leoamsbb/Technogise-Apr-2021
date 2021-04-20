@@ -19,7 +19,9 @@ case object Default extends Step {
       val fromColumn = current.increaseColumn.column
       (fromColumn to 8).map(Position(current.row, _)).toList
     case Diagonal(true, _) =>
-      leftForward(current, Nil) ::: rightForward(current, Nil)
+      val left = (_:Position).increaseRow.decreaseColumn
+      val right = (_:Position).increaseRow.increaseColumn
+      loop(current, Nil)(left) ::: loop(current, Nil)(right)
     case _ => Nil
   }
 
@@ -31,37 +33,20 @@ case object Default extends Step {
       val toColumn = current.column
       (1 until toColumn).map(Position(current.row, _)).toList
     case Diagonal(_, true) =>
-      leftBackward(current, Nil) ::: rightBackward(current, Nil)
+      val left = (_:Position).decreaseRow.decreaseColumn
+      val right = (_:Position).decreaseRow.increaseColumn
+      loop(current, Nil)(left) ::: loop(current, Nil)(right)
     case _ => Nil
   }
 
   @tailrec
-  def leftForward(current: Position, acc: List[Position]): List[Position] =
-    if(outsideBoard(current.increaseRow.decreaseColumn))
+  def loop(current: Position, acc: List[Position])(mapper: Position => Position): List[Position] = {
+    val next = mapper(current)
+    if (outsideBoard(next))
       acc
     else
-      leftForward(current.increaseRow.decreaseColumn, current.increaseRow.decreaseColumn :: acc)
-
-  @tailrec
-  def rightForward(current: Position, acc: List[Position]): List[Position] =
-    if(outsideBoard(current.increaseRow.increaseColumn))
-      acc
-    else
-      rightForward(current.increaseRow.increaseColumn, current.increaseRow.increaseColumn :: acc)
-
-  @tailrec
-  def leftBackward(current: Position, acc: List[Position]): List[Position] =
-    if(outsideBoard(current.decreaseRow.decreaseColumn))
-      acc
-    else
-      leftBackward(current.decreaseRow.decreaseColumn, current.decreaseRow.decreaseColumn :: acc)
-
-  @tailrec
-  def rightBackward(current: Position, acc: List[Position]): List[Position] =
-    if(outsideBoard(current.increaseRow.increaseColumn))
-      acc
-    else
-      rightBackward(current.decreaseRow.increaseColumn, current.decreaseRow.increaseColumn :: acc)
+      loop(next, next :: acc)(mapper)
+  }
 }
 
 case object Single extends Step {
