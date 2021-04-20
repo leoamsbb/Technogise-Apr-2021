@@ -4,6 +4,11 @@ sealed trait Direction {
   def forward: Boolean
 
   def backward: Boolean
+
+  def possibleMoves(step: Step, current: Position): List[Position] = List(
+    step.advance(current, this),
+    step.retreat(current, this)
+  ).flatten
 }
 
 case class Vertical(override val forward: Boolean = true, override val backward: Boolean = true) extends Direction

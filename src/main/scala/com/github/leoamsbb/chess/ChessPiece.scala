@@ -1,5 +1,7 @@
 package com.github.leoamsbb.chess
 
+import com.github.leoamsbb.chess.ChessBoard.withinBoard
+
 import scala.language.implicitConversions
 
 sealed trait ChessPiece {
@@ -9,10 +11,13 @@ sealed trait ChessPiece {
 
   def canMove: List[Direction] = List(Vertical(), Horizontal(), Diagonal())
 
+  def possibleMoves: List[Position] = canMove
+    .flatMap { dir => dir.possibleMoves(step, current) }
+    .filter(withinBoard)
 }
 
 case class King(current: Position) extends ChessPiece {
-  override val step:Step = Single
+  override val step: Step = Single
 }
 
 case class Horse(current: Position) extends ChessPiece {
@@ -32,7 +37,7 @@ case class Rook(current: Position) extends ChessPiece {
 }
 
 case class Pawn(current: Position) extends ChessPiece {
-  override val step:Step = Single
+  override val step: Step = Single
 
   override def canMove: List[Direction] = List(Vertical(backward = false), Diagonal(backward = false))
 }
