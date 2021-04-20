@@ -2,7 +2,7 @@ package com.github.leoamsbb.chess
 
 import org.scalatest.{FunSpec, Matchers}
 
-class StepSpec extends FunSpec with Matchers {
+class StepSpec extends FunSpec with ChessSpec with Matchers{
 
   val vertical = Vertical()
   val horizontal = Horizontal()
@@ -73,8 +73,5 @@ class StepSpec extends FunSpec with Matchers {
     it("should return correct position when taken in diagonal backward direction") {
       verifyOutput(Default.retreat("F3", diagonal), List("D1", "E2", "E4", "D5", "C6", "B7", "A8"))
     }
-  }
-  private def verifyOutput(actual: List[Position], expected: List[String]): Unit = {
-    actual.map(_.toString) should contain theSameElementsAs expected
   }
 }
