@@ -52,6 +52,28 @@ class StepSpec extends FunSpec with Matchers {
     }
   }
 
+  describe("Default Step : Entire Row, Column & Diagonal") {
+    it("should return correct position when taken in vertical forward direction") {
+      verifyOutput(Default.advance("F3", vertical), List("G3", "H3"))
+    }
+    it("should return correct position when taken in vertical backward direction") {
+      verifyOutput(Default.retreat("F3", vertical), List("A3", "B3", "C3", "D3", "E3"))
+    }
+
+    it("should return correct position when taken in horizontal forward direction") {
+      verifyOutput(Default.advance("F3", horizontal), List("F4", "F5", "F6", "F7", "F8"))
+    }
+    it("should return correct position when taken in horizontal backward direction") {
+      verifyOutput(Default.retreat("F3", horizontal), List("F1", "F2"))
+    }
+
+    it("should return correct position when taken in diagonal forward direction") {
+      verifyOutput(Default.advance("F3", diagonal), List("H1", "G2", "G4", "H5"))
+    }
+    it("should return correct position when taken in diagonal backward direction") {
+      verifyOutput(Default.retreat("F3", diagonal), List("D1", "E2", "E4", "D5", "C6", "B7", "A8"))
+    }
+  }
   private def verifyOutput(actual: List[Position], expected: List[String]): Unit = {
     actual.map(_.toString) should contain theSameElementsAs expected
   }
