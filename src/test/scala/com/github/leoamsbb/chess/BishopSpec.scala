@@ -1,6 +1,5 @@
 package com.github.leoamsbb.chess
 
-import org.scalatest.FunSpec
 import org.scalatest.prop.TableDrivenPropertyChecks._
 
 class BishopSpec extends ChessSpec {

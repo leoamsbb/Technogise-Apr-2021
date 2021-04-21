@@ -13,6 +13,12 @@ class StepSpec extends ChessSpec {
     it("should return correct position when taken in vertical backward direction") {
       verifyOutput(Single.retreat("D5", vertical), List("C5"))
     }
+    it("should return empty list when forward or backward is disabled for vertical direction") {
+      Single.advance("D5", vertical.copy(forward = false)) shouldBe empty
+      Single.advance("D5", vertical.copy(forward = false, backward = false)) shouldBe empty
+      Single.retreat("D5", vertical.copy(backward = false)) shouldBe empty
+      Single.retreat("D5", vertical.copy(forward = false, backward = false)) shouldBe empty
+    }
 
     it("should return correct position when taken in horizontal forward direction") {
       verifyOutput(Single.advance("D5", horizontal), List("D6"))
@@ -20,12 +26,24 @@ class StepSpec extends ChessSpec {
     it("should return correct position when taken in horizontal backward direction") {
       verifyOutput(Single.retreat("D5", horizontal), List("D4"))
     }
+    it("should return empty list when forward or backward is disabled for horizontal direction") {
+      Single.advance("D5", horizontal.copy(forward = false)) shouldBe empty
+      Single.advance("D5", horizontal.copy(forward = false, backward = false)) shouldBe empty
+      Single.retreat("D5", horizontal.copy(backward = false)) shouldBe empty
+      Single.retreat("D5", horizontal.copy(forward = false, backward = false)) shouldBe empty
+    }
 
     it("should return correct position when taken in diagonal forward direction") {
       verifyOutput(Single.advance("D5", diagonal), List("E4", "E6"))
     }
     it("should return correct position when taken in diagonal backward direction") {
       verifyOutput(Single.retreat("D5", diagonal), List("C4", "C6"))
+    }
+    it("should return empty list when forward or backward is disabled for diagonal direction") {
+      Single.advance("D5", diagonal.copy(forward = false)) shouldBe empty
+      Single.advance("D5", diagonal.copy(forward = false, backward = false)) shouldBe empty
+      Single.retreat("D5", diagonal.copy(backward = false)) shouldBe empty
+      Single.retreat("D5", diagonal.copy(forward = false, backward = false)) shouldBe empty
     }
   }
 
@@ -36,6 +54,12 @@ class StepSpec extends ChessSpec {
     it("should return correct position when taken in vertical backward direction") {
       verifyOutput(TwoAndHalf.retreat("E3", vertical), List("C2", "C4"))
     }
+    it("should return empty list when forward or backward is disabled for vertical direction") {
+      TwoAndHalf.advance("D5", vertical.copy(forward = false)) shouldBe empty
+      TwoAndHalf.advance("D5", vertical.copy(forward = false, backward = false)) shouldBe empty
+      TwoAndHalf.retreat("D5", vertical.copy(backward = false)) shouldBe empty
+      TwoAndHalf.retreat("D5", vertical.copy(forward = false, backward = false)) shouldBe empty
+    }
 
     it("should return correct position when taken in horizontal forward direction") {
       verifyOutput(TwoAndHalf.advance("E3", horizontal), List("F5", "D5"))
@@ -43,10 +67,20 @@ class StepSpec extends ChessSpec {
     it("should return correct position when taken in horizontal backward direction") {
       verifyOutput(TwoAndHalf.retreat("E3", horizontal), List("F1", "D1"))
     }
+    it("should return empty list when forward or backward is disabled for horizontal direction") {
+      TwoAndHalf.advance("D5", horizontal.copy(forward = false)) shouldBe empty
+      TwoAndHalf.advance("D5", horizontal.copy(forward = false, backward = false)) shouldBe empty
+      TwoAndHalf.retreat("D5", horizontal.copy(backward = false)) shouldBe empty
+      TwoAndHalf.retreat("D5", horizontal.copy(forward = false, backward = false)) shouldBe empty
+    }
 
     it("should return empty list when taken in either diagonal direction") {
       TwoAndHalf.advance("E3", diagonal) shouldBe empty
       TwoAndHalf.retreat("E3", diagonal) shouldBe empty
+      TwoAndHalf.advance("E3", diagonal.copy(forward = false)) shouldBe empty
+      TwoAndHalf.advance("E3", diagonal.copy(forward = false, backward = false)) shouldBe empty
+      TwoAndHalf.retreat("E3", diagonal.copy(backward = false)) shouldBe empty
+      TwoAndHalf.retreat("E3", diagonal.copy(forward = false, backward = false)) shouldBe empty
     }
   }
 
@@ -57,6 +91,12 @@ class StepSpec extends ChessSpec {
     it("should return correct position when taken in vertical backward direction") {
       verifyOutput(Default.retreat("F3", vertical), List("A3", "B3", "C3", "D3", "E3"))
     }
+    it("should return empty list when forward or backward is disabled for vertical direction") {
+      Default.advance("D5", vertical.copy(forward = false)) shouldBe empty
+      Default.advance("D5", vertical.copy(forward = false, backward = false)) shouldBe empty
+      Default.retreat("D5", vertical.copy(backward = false)) shouldBe empty
+      Default.retreat("D5", vertical.copy(forward = false, backward = false)) shouldBe empty
+    }
 
     it("should return correct position when taken in horizontal forward direction") {
       verifyOutput(Default.advance("F3", horizontal), List("F4", "F5", "F6", "F7", "F8"))
@@ -64,12 +104,24 @@ class StepSpec extends ChessSpec {
     it("should return correct position when taken in horizontal backward direction") {
       verifyOutput(Default.retreat("F3", horizontal), List("F1", "F2"))
     }
+    it("should return empty list when forward or backward is disabled for horizontal direction") {
+      Default.advance("D5", horizontal.copy(forward = false)) shouldBe empty
+      Default.advance("D5", horizontal.copy(forward = false, backward = false)) shouldBe empty
+      Default.retreat("D5", horizontal.copy(backward = false)) shouldBe empty
+      Default.retreat("D5", horizontal.copy(forward = false, backward = false)) shouldBe empty
+    }
 
     it("should return correct position when taken in diagonal forward direction") {
       verifyOutput(Default.advance("F3", diagonal), List("H1", "G2", "G4", "H5"))
     }
     it("should return correct position when taken in diagonal backward direction") {
       verifyOutput(Default.retreat("F3", diagonal), List("D1", "E2", "E4", "D5", "C6", "B7", "A8"))
+    }
+    it("should return empty list when forward or backward is disabled for diagonal direction") {
+      Default.advance("D5", diagonal.copy(forward = false)) shouldBe empty
+      Default.advance("D5", diagonal.copy(forward = false, backward = false)) shouldBe empty
+      Default.retreat("D5", diagonal.copy(backward = false)) shouldBe empty
+      Default.retreat("D5", diagonal.copy(forward = false, backward = false)) shouldBe empty
     }
   }
 }
