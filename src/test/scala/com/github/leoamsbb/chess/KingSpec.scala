@@ -1,9 +1,8 @@
 package com.github.leoamsbb.chess
 
 import org.scalatest.prop.TableDrivenPropertyChecks._
-import org.scalatest.{FunSpec, Matchers}
 
-class KingSpec extends FunSpec with Matchers with ChessSpec {
+class KingSpec extends ChessSpec {
   describe("King placed centrally") {
     it("should return correct possible positions when placed at D5") {
       verifyOutput(

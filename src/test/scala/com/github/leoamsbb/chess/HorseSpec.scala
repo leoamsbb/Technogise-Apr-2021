@@ -1,9 +1,8 @@
 package com.github.leoamsbb.chess
 
-import org.scalatest.FunSpec
 import org.scalatest.prop.TableDrivenPropertyChecks._
 
-class HorseSpec extends FunSpec with ChessSpec {
+class HorseSpec extends ChessSpec {
 
   describe("Horse placed within board") {
     it("should return correct position when placed at E3") {

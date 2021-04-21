@@ -1,8 +1,6 @@
 package com.github.leoamsbb.chess
 
-import org.scalatest.{FunSpec, Matchers}
-
-class StepSpec extends FunSpec with ChessSpec with Matchers{
+class StepSpec extends ChessSpec {
 
   val vertical = Vertical()
   val horizontal = Horizontal()

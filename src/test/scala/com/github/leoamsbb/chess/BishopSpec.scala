@@ -3,7 +3,7 @@ package com.github.leoamsbb.chess
 import org.scalatest.FunSpec
 import org.scalatest.prop.TableDrivenPropertyChecks._
 
-class BishopSpec extends FunSpec with ChessSpec {
+class BishopSpec extends ChessSpec {
 
   describe("Bishop placed within board") {
     it("should return correct position when placed at E3") {
