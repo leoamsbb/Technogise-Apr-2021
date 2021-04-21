@@ -50,7 +50,7 @@ object ChessPiece {
     case s"Bishop $pos" => Bishop(pos)
     case s"Rook $pos" => Rook(pos)
     case s"Pawn $pos" => Pawn(pos)
-    case _ => throw new Exception("Invalid input. Case matters. Usage: King D5")
+    case _ => throw new Exception("Invalid input of Chess Piece Name. Case matters. Usage: King D5")
   }
 }
 

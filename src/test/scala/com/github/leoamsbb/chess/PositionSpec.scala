@@ -11,9 +11,21 @@ class PositionSpec extends FunSpec with Matchers {
       pos.column shouldBe 3
     }
 
-    it("display position in proper output format") {
+    it("should display position in proper output format") {
       val pos: Position = Position('C', 4)
       pos.toString shouldBe "C4"
+    }
+
+    it("should throw exception when the position not within board") {
+      val exception = intercept[Exception] {
+        val pos: Position = "d2"
+      }
+      exception.getMessage shouldBe
+        """Invalid usage of Position.
+          |Case Matters.
+          |Limits: 'A' to 'H' and 1 to 8.
+          |Example: D4
+          |""".stripMargin
     }
   }
 

@@ -33,7 +33,7 @@ class ChessPieceSpec extends FunSpec with Matchers {
 
     it("should throw exception about usage when wrong input provided") {
       val exception = intercept[Exception]{val piece: ChessPiece = "chesspiece"}
-      exception.getMessage shouldBe "Invalid input. Case matters. Usage: King D5"
+      exception.getMessage shouldBe "Invalid input of Chess Piece Name. Case matters. Usage: King D5"
     }
 
     def createAndVerify[T: ClassTag](input: String, expectedPosition: String): Unit = {

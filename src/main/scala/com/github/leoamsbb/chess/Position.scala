@@ -1,5 +1,7 @@
 package com.github.leoamsbb.chess
 
+import com.github.leoamsbb.chess.ChessBoard.withinBoard
+
 import scala.language.implicitConversions
 
 case class Position(row: Char, column: Int) {
@@ -13,10 +15,20 @@ case class Position(row: Char, column: Int) {
 }
 
 object Position {
-  implicit def fromString(strPosition: String) : Position =
-    Position(
+  implicit def fromString(strPosition: String) : Position = {
+    val p = Position(
       strPosition.charAt(0),
       Integer.parseInt(strPosition.charAt(1).toString)
     )
+    if (withinBoard(p))
+      p
+    else
+      throw new Exception(
+        """Invalid usage of Position.
+          |Case Matters.
+          |Limits: 'A' to 'H' and 1 to 8.
+          |Example: D4
+          |""".stripMargin)
+  }
 }
 

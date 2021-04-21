@@ -11,13 +11,13 @@ class ChessBoardSpec extends FunSpec with Matchers {
     }
 
     it("should return false when the given position is outside board") {
-      withinBoard("H0") shouldBe false
+      withinBoard(Position('H', 0)) shouldBe false
     }
   }
 
   describe("outsideBoard") {
     it("should return true when the given position is outside board") {
-      outsideBoard("A9") shouldBe true
+      outsideBoard(Position('A', 9)) shouldBe true
     }
 
     it("should return false when the given position is inside board") {
