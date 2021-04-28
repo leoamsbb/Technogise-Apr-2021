@@ -1,11 +1,10 @@
 package com.github.leoamsbb.chess
 
 import com.github.leoamsbb.chess.step.{Default, Single, TwoAndHalf}
-import org.scalatest.{FunSpec, Matchers}
 
 import scala.reflect.ClassTag
 
-class ChessPieceSpec extends FunSpec with Matchers {
+class ChessPieceSpec extends ChessSpec {
   describe("ChessPiece Extraction") {
 
     it ("should extract King and current position from String") {
@@ -33,7 +32,7 @@ class ChessPieceSpec extends FunSpec with Matchers {
     }
 
     it("should throw exception about usage when wrong input provided") {
-      val exception = intercept[Exception]{val piece: ChessPiece = "chesspiece"}
+      val exception = intercept[Exception]{ChessPiece.fromString("chesspiece")}
       exception.getMessage shouldBe "Invalid input of Chess Piece Name. Case matters. Usage: King D5"
     }
 

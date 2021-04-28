@@ -1,8 +1,6 @@
 package com.github.leoamsbb.chess
 
-import org.scalatest.{FunSpec, Matchers}
-
-class PositionSpec extends FunSpec with Matchers {
+class PositionSpec extends ChessSpec {
 
   describe("Position Extraction") {
     it("should be able to separate String into row and column type") {
@@ -18,7 +16,7 @@ class PositionSpec extends FunSpec with Matchers {
 
     it("should throw exception when the position not within board") {
       val exception = intercept[Exception] {
-        val pos: Position = "d2"
+        Position.fromString("d2")
       }
       exception.getMessage shouldBe
         """Invalid usage of Position.

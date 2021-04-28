@@ -1,9 +1,9 @@
 package com.github.leoamsbb.chess
 
-import org.scalatest.{FunSpec, Matchers}
+import org.scalatest.{Assertion, FunSpec, Matchers}
 
 trait ChessSpec extends FunSpec with Matchers {
-  def verifyOutput(actual: List[Position], expected: List[String]) = {
+  def verifyOutput(actual: List[Position], expected: List[String]): Assertion = {
     actual.map(_.toString) should contain theSameElementsAs expected
   }
 }

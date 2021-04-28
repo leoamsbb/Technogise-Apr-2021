@@ -1,9 +1,8 @@
 package com.github.leoamsbb.chess
 
 import com.github.leoamsbb.chess.ChessBoard.{outsideBoard, withinBoard}
-import org.scalatest.{FunSpec, Matchers}
 
-class ChessBoardSpec extends FunSpec with Matchers {
+class ChessBoardSpec extends ChessSpec {
 
   describe("withinBoard") {
     it("should return true when the given position is inside board") {
