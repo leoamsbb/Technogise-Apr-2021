@@ -7,7 +7,7 @@ class BishopSpec extends ChessSpec {
   describe("Bishop placed within board") {
     it("should return correct position when placed at E3") {
       verifyOutput(
-        actual = Bishop("E3").possibleMoves,
+        actual = Bishop("E3").possiblePositions,
         expected = List(
           "C1", "D2", "F4", "G5", "H6",
           "F2", "G1", "D4", "C5", "B6", "A7"
@@ -17,7 +17,7 @@ class BishopSpec extends ChessSpec {
 
     it("should return correct position when placed at C6") {
       verifyOutput(
-        actual = Bishop("C6").possibleMoves,
+        actual = Bishop("C6").possiblePositions,
         expected = List(
           "B7", "A8", "D5", "E4", "F3", "G2", "H1",
           "B5", "D7", "A4", "E8"
@@ -38,7 +38,7 @@ class BishopSpec extends ChessSpec {
     it("should return correct position when placed at corners") {
       forAll(bishopOnCorners) { (position, expectedResult) => {
         verifyOutput(
-          actual = Bishop(position).possibleMoves,
+          actual = Bishop(position).possiblePositions,
           expected = expectedResult
         )
       }
@@ -58,7 +58,7 @@ class BishopSpec extends ChessSpec {
     it("should return correct position when placed on borders") {
       forAll(horseOnCorners) { (position, expectedResult) => {
         verifyOutput(
-          actual = Bishop(position).possibleMoves,
+          actual = Bishop(position).possiblePositions,
           expected = expectedResult
         )
       }

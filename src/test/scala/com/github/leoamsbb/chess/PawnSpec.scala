@@ -6,13 +6,13 @@ class PawnSpec extends ChessSpec {
   describe("Pawn placed centrally") {
     it("should return correct possible positions when placed at D5") {
       verifyOutput(
-        actual = Pawn("D5").possibleMoves,
+        actual = Pawn("D5").possiblePositions,
         expected = List("E5"))
     }
 
     it("should return correct possible positions when placed at B7") {
       verifyOutput(
-        actual = Pawn("B7").possibleMoves,
+        actual = Pawn("B7").possiblePositions,
         expected = List("C7"))
     }
   }
@@ -28,7 +28,7 @@ class PawnSpec extends ChessSpec {
     it("should return correct positions when placed at corner") {
       forAll(pawnInCorners) { (pawnsPosition, expectedResult) => {
         verifyOutput(
-          actual = Pawn(pawnsPosition).possibleMoves,
+          actual = Pawn(pawnsPosition).possiblePositions,
           expected = expectedResult
         )
       }
@@ -47,7 +47,7 @@ class PawnSpec extends ChessSpec {
     it("should return correct positions when placed on border lines") {
       forAll(pawnOnBorders) { (pawnsPosition, expectedResult) => {
         verifyOutput(
-          actual = Pawn(pawnsPosition).possibleMoves,
+          actual = Pawn(pawnsPosition).possiblePositions,
           expected = expectedResult
         )
       }

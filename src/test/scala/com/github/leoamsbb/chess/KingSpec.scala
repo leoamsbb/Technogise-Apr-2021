@@ -6,7 +6,7 @@ class KingSpec extends ChessSpec {
   describe("King placed centrally") {
     it("should return correct possible positions when placed at D5") {
       verifyOutput(
-        actual = King("D5").possibleMoves,
+        actual = King("D5").possiblePositions,
         expected = List(
           "E4", "E5", "E6",
           "D4", "D6",
@@ -15,7 +15,7 @@ class KingSpec extends ChessSpec {
 
     it("should return correct possible positions when placed at B7") {
       verifyOutput(
-        actual = King("B7").possibleMoves,
+        actual = King("B7").possiblePositions,
         expected = List(
           "A6", "A7", "A8",
           "B6", "B8",
@@ -34,7 +34,7 @@ class KingSpec extends ChessSpec {
     it("should return correct positions when placed at corner") {
       forAll(kingInCorners) { (kingsPosition, expectedResult) => {
         verifyOutput(
-          actual = King(kingsPosition).possibleMoves,
+          actual = King(kingsPosition).possiblePositions,
           expected = expectedResult
         )
       }
@@ -53,7 +53,7 @@ class KingSpec extends ChessSpec {
     it("should return correct positions when placed on border lines") {
       forAll(kingInCorners) { (kingsPosition, expectedResult) => {
         verifyOutput(
-          actual = King(kingsPosition).possibleMoves,
+          actual = King(kingsPosition).possiblePositions,
           expected = expectedResult
         )
       }

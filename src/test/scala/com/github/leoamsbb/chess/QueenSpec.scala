@@ -7,7 +7,7 @@ class QueenSpec extends ChessSpec {
   describe("Queen placed centrally") {
     it("should return correct possible positions when placed at E3") {
       verifyOutput(
-        actual = Queen("E3").possibleMoves,
+        actual = Queen("E3").possiblePositions,
         expected = List(
           "F3", "G3", "H3",
           "A3", "B3", "C3", "D3",
@@ -21,7 +21,7 @@ class QueenSpec extends ChessSpec {
 
     it("should return correct possible positions when placed at C2") {
       verifyOutput(
-        actual = Queen("C2").possibleMoves,
+        actual = Queen("C2").possiblePositions,
         expected = List(
           "A2", "B2",
           "D2", "E2", "F2", "G2", "H2",
@@ -70,7 +70,7 @@ class QueenSpec extends ChessSpec {
     it("should return correct position when placed at corners") {
       forAll(queenOnCorners) { (position, expectedResult) => {
         verifyOutput(
-          actual = Queen(position).possibleMoves,
+          actual = Queen(position).possiblePositions,
           expected = expectedResult
         )
       }
@@ -118,7 +118,7 @@ class QueenSpec extends ChessSpec {
     it("should return correct position when placed on borders") {
       forAll(queenOnBorder) { (position, expectedResult) => {
         verifyOutput(
-          actual = Queen(position).possibleMoves,
+          actual = Queen(position).possiblePositions,
           expected = expectedResult
         )
       }

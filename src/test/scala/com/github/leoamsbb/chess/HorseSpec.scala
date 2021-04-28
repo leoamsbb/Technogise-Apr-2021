@@ -7,7 +7,7 @@ class HorseSpec extends ChessSpec {
   describe("Horse placed within board") {
     it("should return correct position when placed at E3") {
       verifyOutput(
-        actual = Horse("E3").possibleMoves,
+        actual = Horse("E3").possiblePositions,
         expected = List(
           "G2", "G4", "F1", "F5",
           "D1", "D5", "C2", "C4"
@@ -17,7 +17,7 @@ class HorseSpec extends ChessSpec {
 
     it("should return correct position when placed at C6") {
       verifyOutput(
-        actual = Horse("C6").possibleMoves,
+        actual = Horse("C6").possiblePositions,
         expected = List(
           "E5", "E7", "D4", "D8",
           "A5", "A7", "B4", "B8"
@@ -38,7 +38,7 @@ class HorseSpec extends ChessSpec {
     it("should return correct position when placed at corners") {
       forAll(horseOnCorners) { (position, expectedResult) => {
         verifyOutput(
-          actual = Horse(position).possibleMoves,
+          actual = Horse(position).possiblePositions,
           expected = expectedResult
         )
       }
@@ -58,7 +58,7 @@ class HorseSpec extends ChessSpec {
     it("should return correct position when placed on borders") {
       forAll(horseOnCorners) { (position, expectedResult) => {
         verifyOutput(
-          actual = Horse(position).possibleMoves,
+          actual = Horse(position).possiblePositions,
           expected = expectedResult
         )
       }

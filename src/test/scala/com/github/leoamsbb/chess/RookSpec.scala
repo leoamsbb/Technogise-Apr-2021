@@ -6,7 +6,7 @@ class RookSpec extends ChessSpec {
   describe("Rook placed centrally") {
     it("should return correct possible positions when placed at E3") {
       verifyOutput(
-        actual = Rook("E3").possibleMoves,
+        actual = Rook("E3").possiblePositions,
         expected = List(
           "F3", "G3", "H3",
           "A3", "B3", "C3", "D3",
@@ -18,7 +18,7 @@ class RookSpec extends ChessSpec {
 
     it("should return correct possible positions when placed at C2") {
       verifyOutput(
-        actual = Rook("C2").possibleMoves,
+        actual = Rook("C2").possiblePositions,
         expected = List(
           "A2", "B2",
           "D2", "E2", "F2", "G2", "H2",
@@ -61,7 +61,7 @@ class RookSpec extends ChessSpec {
     it("should return correct position when placed at corners") {
       forAll(queenOnCorners) { (position, expectedResult) => {
         verifyOutput(
-          actual = Rook(position).possibleMoves,
+          actual = Rook(position).possiblePositions,
           expected = expectedResult
         )
       }
@@ -101,7 +101,7 @@ class RookSpec extends ChessSpec {
     it("should return correct position when placed on borders") {
       forAll(queenOnBorder) { (position, expectedResult) => {
         verifyOutput(
-          actual = Rook(position).possibleMoves,
+          actual = Rook(position).possiblePositions,
           expected = expectedResult
         )
       }
