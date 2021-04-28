@@ -13,8 +13,8 @@ sealed trait Direction {
   ).flatten
 }
 
-case class Vertical(override val forward: Boolean = true, override val backward: Boolean = true) extends Direction
+case class Vertical(forward: Boolean = true, backward: Boolean = true) extends Direction
 
-case class Horizontal(override val forward: Boolean = true, override val backward: Boolean = true) extends Direction
+case class Horizontal(forward: Boolean = true, backward: Boolean = true) extends Direction
 
-case class Diagonal(override val forward: Boolean = true, override val backward: Boolean = true) extends Direction
+case class Diagonal(forward: Boolean = true, backward: Boolean = true) extends Direction
