@@ -1,5 +1,7 @@
 package com.github.leoamsbb.chess
 
+import com.github.leoamsbb.chess.step.Step
+
 sealed trait Direction {
   def forward: Boolean
 

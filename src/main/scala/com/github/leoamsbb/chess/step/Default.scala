@@ -1,6 +1,7 @@
-package com.github.leoamsbb.chess
+package com.github.leoamsbb.chess.step
 
 import com.github.leoamsbb.chess.ChessBoard.outsideBoard
+import com.github.leoamsbb.chess._
 
 import scala.annotation.tailrec
 
@@ -13,8 +14,8 @@ case object Default extends Step {
       val fromColumn = current.increaseColumn.column
       (fromColumn to 8).map(Position(current.row, _)).toList
     case Diagonal(true, _) =>
-      val left = (_:Position).increaseRow.decreaseColumn
-      val right = (_:Position).increaseRow.increaseColumn
+      val left = (_: Position).increaseRow.decreaseColumn
+      val right = (_: Position).increaseRow.increaseColumn
       loop(current, Nil)(left) ::: loop(current, Nil)(right)
     case _ => Nil
   }
@@ -27,8 +28,8 @@ case object Default extends Step {
       val toColumn = current.column
       (1 until toColumn).map(Position(current.row, _)).toList
     case Diagonal(_, true) =>
-      val left = (_:Position).decreaseRow.decreaseColumn
-      val right = (_:Position).decreaseRow.increaseColumn
+      val left = (_: Position).decreaseRow.decreaseColumn
+      val right = (_: Position).decreaseRow.increaseColumn
       loop(current, Nil)(left) ::: loop(current, Nil)(right)
     case _ => Nil
   }

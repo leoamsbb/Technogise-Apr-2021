@@ -1,5 +1,6 @@
 package com.github.leoamsbb.chess
 
+import com.github.leoamsbb.chess.step.{Default, Single, TwoAndHalf}
 import org.scalatest.{FunSpec, Matchers}
 
 import scala.reflect.ClassTag

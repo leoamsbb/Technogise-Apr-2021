@@ -1,4 +1,6 @@
-package com.github.leoamsbb.chess
+package com.github.leoamsbb.chess.step
+
+import com.github.leoamsbb.chess._
 
 case object Single extends Step {
   def advance(current: Position, direction: Direction): List[Position] = direction match {

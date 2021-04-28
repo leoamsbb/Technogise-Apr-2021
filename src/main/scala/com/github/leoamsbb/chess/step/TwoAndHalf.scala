@@ -1,4 +1,6 @@
-package com.github.leoamsbb.chess
+package com.github.leoamsbb.chess.step
+
+import com.github.leoamsbb.chess.{Direction, Horizontal, Position, Vertical}
 
 case object TwoAndHalf extends Step {
   private val verticalHalfSteps = List((_: Position).increaseColumn, (_: Position).decreaseColumn)

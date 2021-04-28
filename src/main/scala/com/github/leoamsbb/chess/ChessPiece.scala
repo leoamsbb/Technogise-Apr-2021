@@ -1,6 +1,7 @@
 package com.github.leoamsbb.chess
 
 import com.github.leoamsbb.chess.ChessBoard.withinBoard
+import com.github.leoamsbb.chess.step.{Default, Single, Step, TwoAndHalf}
 
 import scala.language.implicitConversions
 
