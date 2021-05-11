@@ -22,3 +22,14 @@ jobs:
       run: sbt coverage test
     - name: Coverage Report
       run: sbt coverageReport
+
+  deploy:
+    name: Deploy to Heroku
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run sbt stage deployHeroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          sbt stage deployHeroku
