@@ -12,7 +12,7 @@ libraryDependencies ++= Seq(
 enablePlugins(JavaAppPackaging)
 
 // heroku deployment configs
-herokuAppName in Compile := System.getenv("HEROKU_APP_NAME") // unique Heroku app name
+herokuAppName in Compile := Option(System.getenv("HEROKU_APP_NAME")).getOrElse("some-app") // unique Heroku app name
 herokuJdkVersion in Compile := "1.8"
 herokuConfigVars in Compile := Map(
   "HOST" -> "0.0.0.0"
