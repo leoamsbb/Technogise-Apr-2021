@@ -63,7 +63,7 @@ sbt test
 3. Execute below command in bash:
 
 ```
-target/universal/stage/bin/technogies-apr-2021 -main scala.tools.nsc.MainGenericRunner -usejavacp
+<path to Heroku App> -main scala.tools.nsc.MainGenericRunner -usejavacp
 ```
 
 4. Above command will start scala console.
