@@ -51,35 +51,3 @@ Command to execute in Terminal:
 sbt test
 ```
 
-# Heroku
-
-- Reference for Actions CI Job for Heroku deployment: https://amdelamar.com/blog/scala-ci-cd-with-github-actions-and-heroku/
-- Reference to run console: https://devcenter.heroku.com/articles/running-a-remote-sbt-console-for-a-scala-or-play-application
-
-## Running the console on Heroku
-
-1. Go to Heroku Console
-2. Run command `heroku run bash`
-3. Execute below command in bash:
-
-```
-<path to Heroku App> -main scala.tools.nsc.MainGenericRunner -usejavacp
-```
-
-4. Above command will start scala console.
-5. Import the package where main class resides.
-```
-import com.github.leoamsbb.chess._
-```
-6. Call main method
-```
-Game.main(Array(""))
-```
-7. Provide input
-```
-King D5
-```
-8. It will list all possible moves for King when placed at D5 position.
-
-### Possible Improvements
-- This could be a scala play app so that I would be able to access using API.
