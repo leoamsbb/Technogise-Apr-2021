@@ -6,9 +6,6 @@ on:
   pull_request:
     branches: [ main ]
 
-env:
-  HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-
 jobs:
   build:
 
