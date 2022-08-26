@@ -5,8 +5,6 @@
 - [Tools](#tools)
 - [Run Application](#run-application)
 - [Running Tests](#running-tests)
-- [Heroku](#heroku)
-  - [Running the sbt console on Heroku](#running-the-console-on-heroku)
 
 ## Tools
 | Tech / Tools / Libraries | version |
